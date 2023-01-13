@@ -1,32 +1,32 @@
 package com.example.backend.person;
 
-import com.example.backend.person.Person;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringRunner.class)
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PersonRestControllerTest {
+class PersonRestControllerTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
 
     @Test
-    public void getAll() {
+    void findAll() {
         Person[] persons = testRestTemplate.getForObject("/api/v1/persons", Person[].class);
 
-        Assert.assertEquals(0, persons.length);
+        assertThat(persons).hasSize(2);
     }
 
     @Test
-    public void save() {
+    @Transactional
+    void save() {
         Person person = new Person();
         person.setName("Hello");
+
         testRestTemplate.postForObject("/api/v1/demos", person, Person.class);
     }
 
