@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {PersonService} from "./person.service";
-import {Person} from "./person";
+import {UserService} from './login/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,11 @@ import {Person} from "./person";
 export class AppComponent {
   title = 'PersonApp';
 
-  persons: Person[];
-
-  constructor(private personSerivce: PersonService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
-  ngOnInit() {
-    this.getPersons();
-  }
-
-  getPersons(): void {
-    this.personSerivce.getPersons()
-      .subscribe(persons => this.persons = persons);
+  logout() {
+    this.userService.logout();
+    this.router.navigate(["/"]);
   }
 }

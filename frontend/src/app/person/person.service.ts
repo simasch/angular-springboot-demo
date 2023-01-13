@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {Person} from "./person";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonService {
 
@@ -12,6 +12,6 @@ export class PersonService {
   }
 
   getPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>("http://localhost:8080/api/v1/persons")
+    return this.http.get<Person[]>("/api/v1/persons")
   }
 }

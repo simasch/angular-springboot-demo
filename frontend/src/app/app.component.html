@@ -1,18 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<header>
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <a routerLink="/" routerLinkActive="active">Home</a> - <a routerLink="/persons" routerLinkActive="active">Persons</a> - <a href="#" (click)="logout()">Logout</a>
+</header>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-    </tr>
-    <tr *ngFor="let person of persons">
-      <td>{{person.id}}</td>
-      <td>{{person.name}}</td>
-    </tr>
-  </table>
-
-</div>
+<main>
+  <router-outlet></router-outlet>
+</main>

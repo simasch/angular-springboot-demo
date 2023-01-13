@@ -1,0 +1,23 @@
+<h2>Login</h2>
+
+<form (ngSubmit)="login()" class="form-horizontal" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="email" class="control-label col-md-2">Email</label>
+    <div class="col-md-5">
+      <input id="email" type="text" name="email" class="form-control" [(ngModel)]="email" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="control-label col-md-2">Password</label>
+    <div class="col-md-5">
+      <input id="password" type="password" name="password" class="form-control" [(ngModel)]="password" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-1">
+      <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</form>
+
+<p>{{message}}</p>
