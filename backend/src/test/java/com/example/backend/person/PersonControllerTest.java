@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PersonRestControllerTest {
+class PersonControllerTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
