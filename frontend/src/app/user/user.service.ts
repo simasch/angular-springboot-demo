@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {first, Observable} from 'rxjs';
 import {User} from './User';
-import {Buffer} from 'buffer';
 import {environment} from '../../environment/environment';
 
 @Injectable({
@@ -18,7 +17,7 @@ export class UserService {
   }
 
   login(username: string, password: string): Observable<User> {
-    sessionStorage.setItem("app.auth", Buffer.from(username + ':' + password).toString("base64"));
+    sessionStorage.setItem("app.auth", window.btoa(username + ':' + password));
 
     return this.http.get<User>(environment.apiUrl + "/api/v1/users/" + username).pipe(first());
   }
