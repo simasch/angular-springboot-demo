@@ -5,26 +5,24 @@ import {Router} from '@angular/router';
 import {User} from './User';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class UserService {
 
-    auth: string = "";
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
-    constructor(private http: HttpClient, private router: Router) {
-    }
+  isLoggedIn(): boolean {
+    return sessionStorage.getItem("app.auth") != "";
+  }
 
-    isLoggedIn(): boolean {
-        return this.auth != "";
-    }
+  login(username: string, password: string): Observable<User> {
+    sessionStorage.setItem("app.auth", btoa(username + ':' + password));
 
-    login(username: string, password: string): Observable<User> {
-        this.auth = btoa(username + ':' + password);
+    return this.http.get<User>("/api/v1/users/" + username).pipe(first());
+  }
 
-        return this.http.get<User>("/api/v1/users/" + username).pipe(first());
-    }
-
-    logout() {
-        this.auth = "";
-    }
+  logout() {
+    sessionStorage.removeItem("app.auth");
+  }
 }

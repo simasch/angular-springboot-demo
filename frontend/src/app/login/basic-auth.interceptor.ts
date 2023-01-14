@@ -15,9 +15,11 @@ export class BasicAuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        Authorization: `Basic ${this.userService.auth}`,
+        Authorization: `Basic ${sessionStorage.getItem("app.auth")}`,
         'X-Requested-With': 'XMLHttpRequest'
-      }
+      },
+      // Needed since we are using Session Cookies
+      withCredentials: true
     });
 
     return next.handle(request).pipe(
