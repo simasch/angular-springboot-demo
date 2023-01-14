@@ -7,7 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {PersonComponent} from './person/person.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule} from '@angular/forms';
-import {BasicAuthInterceptor} from './login/basic-auth.interceptor';
+import {BasicAuthInterceptor} from './auth/basic-auth.interceptor';
 
 @NgModule({
   declarations: [

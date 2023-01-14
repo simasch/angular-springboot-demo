@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {UserService} from './login/user.service';
 import {Router} from '@angular/router';
+import {UserService} from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,6 @@ export class AppComponent {
 
   logout() {
     this.userService.logout();
-    this.router.navigate(["/"]);
+    this.router.navigateByUrl("/");
   }
 }

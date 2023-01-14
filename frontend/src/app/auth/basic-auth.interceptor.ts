@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {UserService} from './user.service';
 import {Observable, catchError, throwError} from 'rxjs';
 import {Router} from '@angular/router';
+import {UserService} from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +28,8 @@ export class BasicAuthInterceptor implements HttpInterceptor {
   }
 
   private handleErrorRes(error: HttpErrorResponse): Observable<never> {
-    switch (error.status) {
-      case 401:
-        this.router.navigateByUrl('/login', {replaceUrl: true});
-        break;
+    if (error.status === 401) {
+      this.router.navigateByUrl("/login", {replaceUrl: true});
     }
     return throwError(() => error);
   }

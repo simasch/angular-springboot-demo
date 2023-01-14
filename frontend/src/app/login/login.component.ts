@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {UserService} from './user.service';
 import {Router} from '@angular/router';
-import {User} from './User';
+import {UserService} from '../user/user.service';
+import {User} from '../user/User';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent {
       .subscribe({
         next: (user: User) => {
           this.message = "";
-          this.router.navigate(["/persons"]);
+          this.router.navigateByUrl("/persons");
         },
         error: () => this.message = "Login failed"
       });
