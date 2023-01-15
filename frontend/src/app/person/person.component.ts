@@ -3,21 +3,21 @@ import {Person} from './person';
 import {PersonService} from './person.service';
 
 @Component({
-  selector: 'app-person',
-  templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+    selector: 'app-person',
+    templateUrl: './person.component.html',
+    styleUrls: ['./person.component.css']
 })
 export class PersonComponent {
-  persons: Person[] = [];
+    persons: Person[] = [];
 
-  constructor(private personService: PersonService) {
-  }
+    constructor(private personService: PersonService) {
+    }
 
-  ngOnInit() {
-    this.getPersons();
-  }
+    ngOnInit() {
+        this.getPersons();
+    }
 
-  getPersons(): void {
-    this.personService.getPersons().subscribe(persons => this.persons = persons);
-  }
+    getPersons(): void {
+        this.personService.getPersons().subscribe(persons => this.persons = persons);
+    }
 }

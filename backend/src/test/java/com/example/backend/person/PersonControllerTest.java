@@ -16,7 +16,7 @@ class PersonControllerTest {
 
     @Test
     void findAll() {
-        Person[] persons = testRestTemplate.getForObject("/api/v1/persons", Person[].class);
+        Person[] persons = testRestTemplate.getForObject("/api/persons", Person[].class);
 
         assertThat(persons).hasSize(2);
     }
@@ -27,7 +27,7 @@ class PersonControllerTest {
         Person person = new Person();
         person.setName("Hello");
 
-        testRestTemplate.postForObject("/api/v1/demos", person, Person.class);
+        testRestTemplate.postForObject("/api/demos", person, Person.class);
     }
 
 }

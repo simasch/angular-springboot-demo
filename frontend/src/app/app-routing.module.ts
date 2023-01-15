@@ -5,13 +5,13 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'persons', component: PersonComponent, canActivate: [AuthGuard]}
+    {path: 'login', component: LoginComponent},
+    {path: 'persons', component: PersonComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

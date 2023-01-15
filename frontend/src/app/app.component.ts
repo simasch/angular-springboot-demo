@@ -1,20 +1,21 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {UserService} from './user/user.service';
+import {AuthService} from './auth/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PersonApp';
+    title = 'PersonApp';
 
-  constructor(private userService: UserService, private router: Router) {
-  }
+    constructor(private authService: AuthService, private router: Router) {
+    }
 
-  logout() {
-    this.userService.logout();
-    this.router.navigateByUrl("/");
-  }
+    logout() {
+        this.authService.logout();
+
+        this.router.navigateByUrl("/");
+    }
 }
