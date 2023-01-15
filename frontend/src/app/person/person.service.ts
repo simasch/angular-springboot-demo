@@ -4,14 +4,14 @@ import {Observable} from "rxjs";
 import {Person} from "./person";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class PersonService {
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  getPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>("/api/v1/persons")
-  }
+    getPersons(): Observable<Person[]> {
+        return this.http.get<Person[]>("/api/v1/persons")
+    }
 }

@@ -15,7 +15,7 @@ export class AuthService {
     }
 
     login(username: string, password: string): void {
-        this.http.post<string>("/api/auth/", null,
+        this.http.post<string>("/api/auth", null,
             {headers: {Authorization: 'Basic ' + window.btoa(username + ':' + password)}})
             .pipe(first())
             .subscribe({
