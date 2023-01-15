@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {first, Observable} from 'rxjs';
-import {environment} from '../../environment/environment';
+import {HttpClient} from '@angular/common/http';
+import {first} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -16,12 +15,12 @@ export class AuthService {
     }
 
     login(username: string, password: string): void {
-        this.http.post<string>(environment.apiUrl + "/api/auth/", null,
+        this.http.post<string>("/api/auth/", null,
             {headers: {Authorization: 'Basic ' + window.btoa(username + ':' + password)}})
             .pipe(first())
             .subscribe({
                 next: (token) => sessionStorage.setItem("app.auth", token),
-                error: (error) => alert(error)
+                error: (error) => alert(error.status)
             });
     }
 
