@@ -8,6 +8,15 @@ import {PersonComponent} from './person/person.component';
 import {LoginComponent} from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -20,7 +29,16 @@ import {AuthInterceptor} from './auth/auth.interceptor';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        HttpClientXsrfModule
+        HttpClientXsrfModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatTableModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSnackBarModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

@@ -1,10 +1,19 @@
 <header>
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
-    <a routerLink="/" routerLinkActive="active">Home</a> - <a routerLink="/persons" routerLinkActive="active">Persons</a> - <a href="#" (click)="logout()">Logout</a>
+    <mat-toolbar>
+        {{title}}
+    </mat-toolbar>
 </header>
 
-<main>
-    <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+        <ul>
+            <li><a routerLink="/persons" routerLinkActive="active">Persons</a></li>
+            <li><a href="#" (click)="logout()">Logout</a></li>
+        </ul>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

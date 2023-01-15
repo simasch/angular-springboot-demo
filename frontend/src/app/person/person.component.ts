@@ -9,6 +9,7 @@ import {PersonService} from './person.service';
 })
 export class PersonComponent {
     persons: Person[] = [];
+    displayedColumns: string[] = ['id', 'name'];
 
     constructor(private personService: PersonService) {
     }
