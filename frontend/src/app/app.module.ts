@@ -20,7 +20,7 @@ import {AuthInterceptor} from './auth/auth.interceptor';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        HttpClientXsrfModule.withOptions({cookieName: 'XSRF-TOKEN'})
+        HttpClientXsrfModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
