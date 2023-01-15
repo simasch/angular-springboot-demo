@@ -52,16 +52,6 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    UserDetailsService users() {
-        return new InMemoryUserDetailsManager(
-                User.withUsername("user")
-                        .password(passwordEncoder().encode("pass"))
-                        .authorities("app")
-                        .build()
-        );
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
@@ -74,6 +64,16 @@ public class SecurityConfiguration {
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
                 )
                 .build();
+    }
+
+    @Bean
+    UserDetailsService users() {
+        return new InMemoryUserDetailsManager(
+                User.withUsername("user")
+                        .password(passwordEncoder().encode("pass"))
+                        .authorities("app")
+                        .build()
+        );
     }
 
     @Bean
