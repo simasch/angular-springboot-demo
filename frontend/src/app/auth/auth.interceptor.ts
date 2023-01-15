@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!request.url.endsWith("api/auth/")) {
+        if (!request.url.endsWith("api/auth")) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${sessionStorage.getItem("app.auth")}`

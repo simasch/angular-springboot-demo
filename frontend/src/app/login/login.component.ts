@@ -17,8 +17,13 @@ export class LoginComponent {
     }
 
     public login(): void {
-        this.authService.login(this.email, this.password);
-
-        this.router.navigateByUrl("/persons");
+        this.authService.login(this.email, this.password)
+            .subscribe({
+                next: (token) => {
+                    sessionStorage.setItem("app.auth", token);
+                    this.router.navigateByUrl("/persons");
+                },
+                error: (error) => this.message = "Login failed: " + error.status
+            });
     }
 }
