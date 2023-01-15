@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable, catchError, throwError} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -12,10 +12,11 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (!request.url.endsWith("api/auth")) {
+        let token = sessionStorage.getItem("app.token");
+        if (token) {
             request = request.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${sessionStorage.getItem("app.auth")}`
+                    Authorization: `Bearer ${token}`
                 },
             });
         }

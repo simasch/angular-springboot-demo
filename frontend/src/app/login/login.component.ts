@@ -20,7 +20,8 @@ export class LoginComponent {
         this.authService.login(this.email, this.password)
             .subscribe({
                 next: (token) => {
-                    sessionStorage.setItem("app.auth", token);
+                    sessionStorage.setItem("app.token", token);
+
                     this.router.navigateByUrl("/persons");
                 },
                 error: (error) => this.message = "Login failed: " + error.status

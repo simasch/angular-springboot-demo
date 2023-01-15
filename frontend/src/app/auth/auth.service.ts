@@ -11,7 +11,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return sessionStorage.getItem("app.auth") != null;
+        return sessionStorage.getItem("app.token") != null;
     }
 
     login(username: string, password: string): Observable<string> {
@@ -25,6 +25,6 @@ export class AuthService {
     }
 
     logout() {
-        sessionStorage.removeItem("app.auth");
+        sessionStorage.removeItem("app.token");
     }
 }
