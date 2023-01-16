@@ -1,0 +1,21 @@
+<h1>Person</h1>
+
+<form (ngSubmit)="save()" class="form-horizontal" #loginForm="ngForm">
+    <p>
+        <mat-form-field>
+            <mat-label>ID</mat-label>
+            <input matInput id="id" type="text" name="email" class="form-control" [(ngModel)]="person.id" readonly>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput id="name" type="text" name="name" class="form-control" [(ngModel)]="person.name" required>
+        </mat-form-field>
+    </p>
+    <p>
+        <button mat-raised-button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Save</button>
+        &nbsp;
+        <a routerLink="/persons">Back</a>
+    </p>
+</form>
