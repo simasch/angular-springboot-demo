@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {PersonComponent} from './person/person.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth/auth-guard.service';
-import {PersonEditComponent} from './person-edit/person-edit.component';
+import {PersonEditComponent} from './person/edit/person-edit.component';
 
 const routes: Routes = [
     {path: '', component: PersonComponent, canActivate: [AuthGuard]},

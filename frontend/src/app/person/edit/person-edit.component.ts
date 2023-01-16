@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Person} from '../person/person';
-import {PersonService} from '../person/person.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {PersonService} from '../person.service';
+import {Person} from '../person';
 
 @Component({
     selector: 'app-person-edit',
