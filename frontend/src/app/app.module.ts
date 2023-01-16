@@ -18,6 +18,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {PersonEditComponent} from './person-edit/person-edit.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     declarations: [
@@ -40,7 +43,10 @@ import {PersonEditComponent} from './person-edit/person-edit.component';
         MatButtonModule,
         MatInputModule,
         MatFormFieldModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        LayoutModule,
+        MatIconModule,
+        MatListModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
