@@ -1,4 +1,4 @@
-package com.example.backend.person;
+package ch.martinelli.demo.backend.person;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

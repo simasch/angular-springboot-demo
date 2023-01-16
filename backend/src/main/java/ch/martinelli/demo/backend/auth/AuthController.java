@@ -1,4 +1,4 @@
-package com.example.backend.auth;
+package ch.martinelli.demo.backend.auth;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

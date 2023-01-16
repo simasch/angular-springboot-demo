@@ -1,4 +1,4 @@
-package com.example.backend.configuration;
+package ch.martinelli.demo.backend.configuration;
 
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;

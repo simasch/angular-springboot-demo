@@ -1,5 +1,6 @@
-package com.example.backend.person;
+package ch.martinelli.demo.backend.person;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +19,7 @@ class PersonControllerTest {
     void findAll() {
         Person[] persons = testRestTemplate.getForObject("/api/persons", Person[].class);
 
-        assertThat(persons).hasSize(2);
+        Assertions.assertThat(persons).hasSize(2);
     }
 
     @Test

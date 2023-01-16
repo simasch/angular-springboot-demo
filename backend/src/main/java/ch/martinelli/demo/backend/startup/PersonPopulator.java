@@ -1,7 +1,7 @@
-package com.example.backend.startup;
+package ch.martinelli.demo.backend.startup;
 
-import com.example.backend.person.Person;
-import com.example.backend.person.PersonRepository;
+import ch.martinelli.demo.backend.person.Person;
+import ch.martinelli.demo.backend.person.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
