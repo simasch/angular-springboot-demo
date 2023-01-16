@@ -25,7 +25,7 @@ export class LoginComponent {
 
                     this.router.navigateByUrl("/persons");
                 },
-                error: (error) => this.snackBar.open("Login failed: " + error.status, "OK")
+                error: (error) => this.snackBar.open(`Login failed: ${error.status}`, "OK")
             });
     }
 }

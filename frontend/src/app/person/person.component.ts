@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Person} from './person';
 import {PersonService} from './person.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-person',
@@ -11,7 +12,7 @@ export class PersonComponent {
     persons: Person[] = [];
     displayedColumns: string[] = ['id', 'name'];
 
-    constructor(private personService: PersonService) {
+    constructor(private personService: PersonService, private router: Router) {
     }
 
     ngOnInit() {

@@ -17,12 +17,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {PersonEditComponent} from './person-edit/person-edit.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        PersonComponent
+        PersonComponent,
+        PersonEditComponent
     ],
     imports: [
         BrowserModule,

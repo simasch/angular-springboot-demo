@@ -14,4 +14,12 @@ export class PersonService {
     getPersons(): Observable<Person[]> {
         return this.http.get<Person[]>("/api/persons")
     }
+
+    getPerson(id: number): Observable<Person> {
+        return this.http.get<Person>(`/api/persons/${id}`)
+    }
+
+    save(person: Person): Observable<any> {
+        return this.http.post("/api/persons", person);
+    }
 }

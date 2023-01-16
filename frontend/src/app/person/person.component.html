@@ -1,4 +1,8 @@
-<h1>Persons</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Persons</h1>
+
+<p>
+    <a mat-raised-button routerLink="/persons/new">Add</a>
+</p>
 
 <table mat-table [dataSource]="persons" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
@@ -7,7 +11,7 @@
     </ng-container>
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        <td mat-cell *matCellDef="let element"><a routerLink="/persons/{{element.id}}">{{element.name}}</a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
