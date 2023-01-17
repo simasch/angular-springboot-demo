@@ -26,5 +26,24 @@ export class AuthService {
 
     logout() {
         sessionStorage.removeItem("app.token");
+        sessionStorage.removeItem("app.roles");
+    }
+
+    isUserInRole(roleFromRoute: string) {
+        const roles = sessionStorage.getItem("app.roles");
+
+        if (roles!.includes(",")) {
+            if (roles === roleFromRoute) {
+                return true;
+            }
+        } else {
+            const roleArray = roles!.split(",");
+            for (let role of roleArray) {
+                if (role === roleFromRoute) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

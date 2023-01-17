@@ -7,8 +7,8 @@ import {PersonEditComponent} from './person/edit/person-edit.component';
 
 const routes: Routes = [
     {path: '', component: PersonComponent, canActivate: [AuthGuard]},
-    {path: 'persons', component: PersonComponent, canActivate: [AuthGuard]},
-    {path: 'persons/:id', component: PersonEditComponent, canActivate: [AuthGuard]},
+    {path: 'persons', component: PersonComponent, canActivate: [AuthGuard], data: {role: 'ROLE_USER'}},
+    {path: 'persons/:id', component: PersonEditComponent, canActivate: [AuthGuard], data: {role: 'ROLE_USER'}},
     {path: 'login', component: LoginComponent}
 ];
 
