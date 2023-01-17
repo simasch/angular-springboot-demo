@@ -26,7 +26,7 @@ export class PersonEditComponent {
             this.person = new Person();
         } else {
             const id = parseInt(idParam as string, 10);
-            this.personService.getPerson(id).subscribe(person => this.person = person);
+            this.personService.findById(id).subscribe(person => this.person = person);
         }
     }
 

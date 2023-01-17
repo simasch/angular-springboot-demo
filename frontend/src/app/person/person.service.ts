@@ -11,11 +11,11 @@ export class PersonService {
     constructor(private http: HttpClient) {
     }
 
-    getPersons(): Observable<Person[]> {
+    findAll(): Observable<Person[]> {
         return this.http.get<Person[]>("/api/persons")
     }
 
-    getPerson(id: number): Observable<Person> {
+    findById(id: number): Observable<Person> {
         return this.http.get<Person>(`/api/persons/${id}`)
     }
 
