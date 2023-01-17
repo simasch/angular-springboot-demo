@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,18 +22,37 @@ class PersonControllerTest {
 
     @Test
     void findAll() {
-        Person[] persons = testRestTemplate.getForObject("/api/persons", Person[].class);
+        HttpHeaders headers = createAuthorizationHeader();
 
-        Assertions.assertThat(persons).hasSize(2);
+        ResponseEntity<Person[]> response = testRestTemplate.exchange("/api/persons",
+                HttpMethod.GET,
+                new HttpEntity<>(null, headers),
+                Person[].class);
+
+        assertThat(response.getBody()).hasSize(2);
     }
 
     @Test
     @Transactional
     void save() {
-        Person person = new Person();
-        person.setName("Hello");
+        HttpHeaders headers = createAuthorizationHeader();
 
-        testRestTemplate.postForObject("/api/demos", person, Person.class);
+        Person person = new Person();
+        person.setName("Test");
+
+        ResponseEntity<Void> response = testRestTemplate.exchange("/api/persons",
+                HttpMethod.POST,
+                new HttpEntity<>(person, headers),
+                Void.class);
+
+        assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
     }
 
+    private HttpHeaders createAuthorizationHeader() {
+        String token = testRestTemplate.withBasicAuth("user", "pass").postForObject("/api/auth", null, String.class);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + token);
+        return headers;
+    }
 }
