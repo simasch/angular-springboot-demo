@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
-                .csrf(AbstractHttpConfigurer::disable) // Not needed because of Bearer token
+                .csrf((csrf) -> csrf.ignoringRequestMatchers("/token")) // See https://github.com/spring-projects/spring-security-samples/issues/116
                 .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
