@@ -1,6 +1,8 @@
 package ch.martinelli.demo.backend.person;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,11 +21,19 @@ class PersonControllerTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
+    private HttpHeaders headers;
+
+    @BeforeEach
+    public void beforeAll() {
+        if (headers == null) {
+            String token = testRestTemplate.withBasicAuth("user", "pass").postForObject("/api/auth", null, String.class);
+            headers = new HttpHeaders();
+            headers.add("Authorization", "Bearer " + token);
+        }
+    }
 
     @Test
     void findAll() {
-        HttpHeaders headers = createAuthorizationHeader();
-
         ResponseEntity<Person[]> response = testRestTemplate.exchange("/api/persons",
                 HttpMethod.GET,
                 new HttpEntity<>(null, headers),
@@ -35,8 +45,6 @@ class PersonControllerTest {
     @Test
     @Transactional
     void save() {
-        HttpHeaders headers = createAuthorizationHeader();
-
         Person person = new Person();
         person.setName("Test");
 
@@ -48,11 +56,4 @@ class PersonControllerTest {
         assertThat(response.getStatusCode().is2xxSuccessful()).isTrue();
     }
 
-    private HttpHeaders createAuthorizationHeader() {
-        String token = testRestTemplate.withBasicAuth("user", "pass").postForObject("/api/auth", null, String.class);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Bearer " + token);
-        return headers;
-    }
 }
