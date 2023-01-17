@@ -28,9 +28,7 @@ export class LoginComponent {
 
                     const decodedToken = jwtDecode<JwtPayload>(token);
                     // @ts-ignore
-                    alert(decodedToken['scope']);
-                    // @ts-ignore
-                    sessionStorage.setItem("app.roles",  decodedToken['scope']);
+                    sessionStorage.setItem("app.roles",  decodedToken.scope);
 
                     this.router.navigateByUrl("/persons");
                 },
