@@ -34,4 +34,8 @@ describe('LoginComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('message should be empty', () => {
+        expect(component.message).toBeFalsy();
+    })
 });
