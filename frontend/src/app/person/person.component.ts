@@ -12,7 +12,7 @@ export class PersonComponent {
     persons: Person[] = [];
     displayedColumns: string[] = ['id', 'name'];
 
-    constructor(private personService: PersonService, private router: Router) {
+    constructor(private personService: PersonService) {
     }
 
     ngOnInit() {
