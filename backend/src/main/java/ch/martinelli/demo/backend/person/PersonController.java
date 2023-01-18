@@ -23,7 +23,7 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<Person> getAll(Authentication authentication) {
+    public List<Person> getAll() {
         return personService.findAll();
     }
 
