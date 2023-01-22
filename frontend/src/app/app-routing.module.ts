@@ -6,10 +6,11 @@ import {AuthGuard} from './auth/auth-guard.service';
 import {PersonEditComponent} from './person/edit/person-edit.component';
 
 const routes: Routes = [
-    {path: '', component: PersonComponent, canActivate: [AuthGuard], data: {role: 'ROLE_USER'}},
+    {path: '', redirectTo: 'persons', pathMatch: 'full'},
     {path: 'persons', component: PersonComponent, canActivate: [AuthGuard], data: {role: 'ROLE_USER'}},
     {path: 'persons/:id', component: PersonEditComponent, canActivate: [AuthGuard], data: {role: 'ROLE_USER'}},
-    {path: 'login', component: LoginComponent}
+    {path: 'login', component: LoginComponent},
+    {path: '**', redirectTo: 'persons'}
 ];
 
 @NgModule({
