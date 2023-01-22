@@ -1,5 +1,7 @@
 package ch.martinelli.demo.backend.person;
 
+import ch.martinelli.demo.backend.auth.Roles;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RolesAllowed(Roles.USER)
 @RestController
 @RequestMapping("/api/persons")
 public class PersonController {
