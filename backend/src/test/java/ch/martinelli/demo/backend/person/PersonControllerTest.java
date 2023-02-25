@@ -21,12 +21,10 @@ class PersonControllerTest {
     private HttpHeaders headers;
 
     @BeforeEach
-    public void beforeAll() {
-        if (headers == null) {
-            String token = testRestTemplate.withBasicAuth("user", "pass").postForObject("/api/auth", null, String.class);
-            headers = new HttpHeaders();
-            headers.add("Authorization", "Bearer " + token);
-        }
+    public void beforeEach() {
+        String token = testRestTemplate.withBasicAuth("user", "pass").postForObject("/api/auth", null, String.class);
+        headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + token);
     }
 
     @Test
